@@ -14,11 +14,11 @@ export default function MessageForm({ maxLength = 200 }: { maxLength?: number })
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <div className="flex items-start justify-between pt-[16px] pb-[16px]">
+      <div className="flex items-center justify-between pt-[16px] pb-[16px]">
         <button className="flex h-[44px] items-center justify-center rounded-[4px] bg-[#8d2422] px-[16px] text-white text-[16px] font-medium">
           Lähetä
         </button>
-        <span className="text-[#393939] text-[12px] font-medium pt-[16px]">
+        <span className="text-[#393939] text-[12px] font-medium">
           {maxLength - text.length} merkkiä jäljellä
         </span>
       </div>
