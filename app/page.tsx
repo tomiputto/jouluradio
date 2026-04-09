@@ -1,65 +1,213 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Header from '@/components/Header'
+import ChannelCard from '@/components/ChannelCard'
+import NewsCard from '@/components/NewsCard'
+import MessageForm from '@/components/MessageForm'
+import ScrollingMessages from '@/components/ScrollingMessages'
+import { channels } from '@/lib/channels'
+
+const newsItems = [
+  { id: 1, title: 'Kanavat käynnistyivät', date: '13.3.2026', imageUrl: '/kanavat_kaynnistyivat.png' },
+  { id: 2, title: 'Uusi verkkosivusto julkaistu', date: '6.2.2026', imageUrl: '/uusi_verkkosivusto_julkaistu.png' },
+  { id: 3, title: 'Jouluradion yhteiskuunteluilta', date: '20.1.2026', imageUrl: '/jouluradion_yhteiskuunteluilta.png' },
+]
+
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="flex min-h-full justify-center bg-white">
+      <div className="flex w-full flex-col bg-white">
+        <Header />
+
+        {/* Hero banner */}
+        <div className="relative w-full">
+          <Image
+            src="/banner.png"
+            alt="Jouluradio banneri"
+            width={1206}
+            height={558}
+            className="w-full object-cover"
+            priority
+          />
+        </div>
+
+        {/* Kuuntele */}
+        <section className="pt-[24px] pb-[32px]">
+          <div className="flex items-center justify-between px-[20px] pb-[19px]">
+            <h2 className="text-[#333] text-[23px] font-extrabold">Kuuntele</h2>
+            <button className="text-[#8d2422] text-[14px] font-bold">
+              Tutustu kanaviin
+            </button>
+          </div>
+          <div className="scroll-x flex gap-[14px] px-[20px]">
+            {channels.map((ch) => (
+              <ChannelCard key={ch.id} channel={ch} />
+            ))}
+          </div>
+        </section>
+
+        {/* Ajankohtaista */}
+        <section
+          className="pt-[32px] pb-[32px]"
+          style={{ background: 'linear-gradient(to bottom, #f1f1f1 0%, #f1f1f1 20%, #ffffff 100%)' }}
+        >
+          <div className="flex items-center justify-between px-[20px] pb-[19px]">
+            <h2 className="text-[#333] text-[23px] font-extrabold">Ajankohtaista</h2>
+            <button className="text-[#8d2422] text-[14px] font-bold">Lue kaikki</button>
+          </div>
+          <div className="scroll-x flex gap-[16px] px-[20px]">
+            {newsItems.map((item) => (
+              <NewsCard key={item.id} title={item.title} date={item.date} imageUrl={item.imageUrl} />
+            ))}
+          </div>
+        </section>
+
+        {/* Tietoa Jouluradiosta */}
+        <section className="px-[20px] pt-[16px]" style={{ background: 'white' }}>
+          <h2 className="text-[#333] text-[23px] font-extrabold pb-[16px]">
+            Tietoa Jouluradiosta
+          </h2>
+          <div className="rounded-[16px] bg-[#220404] px-[24px] py-[8px]">
+            {['MHz taajuudet', 'Yhteistyökumppanimme', 'Usein kysytyt kysymykset'].map(
+              (item, i, arr) => (
+                <div key={item}>
+                  <div className="flex items-center justify-between py-[18px]">
+                    <span className="text-white text-[14px] font-medium">{item}</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M9 18l6-6-6-6"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  {i < arr.length - 1 && <div className="h-px w-full bg-white/10" />}
+                </div>
+              )
+            )}
+          </div>
+        </section>
+
+        {/* Kuumalinja */}
+        <section className="mt-[32px] bg-[#f1f1f1] px-[20px] py-[24px] rounded-[16px] mx-[0]">
+          <h2 className="text-[#333] text-[23px] font-extrabold pb-[8px]">Kuumalinja</h2>
+          <p className="text-[#333] text-[14px] font-medium pb-[12px]">
+            Lähetä viesti Jouluradion studioon
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+          <MessageForm maxLength={200} />
+
+          <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px] mt-[8px]">
+            Uusimmat viestit
+          </h3>
+          <ScrollingMessages />
+        </section>
+
+        {/* Lähetä meille musiikkia */}
+        <section className="px-[20px] pt-[32px]">
+          <div className="rounded-[16px] bg-[#8d2422] px-[24px] pt-[28px] pb-[16px] flex flex-col gap-[16px]">
+            <h2 className="text-white text-[23px] font-extrabold">
+              Lähetä meille musiikkia
+            </h2>
+            <p className="text-white text-[14px] font-medium">
+              Katso kuinka voit saada omat kappaleesi soimaan kanavillamme
+            </p>
+            <button className="self-start flex h-[44px] items-center justify-center rounded-[4px] border border-white px-[16px] text-white text-[16px] font-medium mb-[16px]">
+              Lue lisää
+            </button>
+          </div>
+        </section>
+
+        {/* Lähetä palautetta */}
+        <section className="px-[20px] pt-[40px]">
+          <h2 className="text-[#333] text-[23px] font-extrabold pb-[8px]">
+            Lähetä palautetta
+          </h2>
+          <p className="text-[#333] text-[14px] font-medium pb-[12px]">
+            Anna meille palautetta ja kehitysehdotuksia
+          </p>
+          <MessageForm maxLength={200} />
+        </section>
+
+        {/* Mikä on Jouluradio */}
+        <section className="mt-[32px] bg-[#f1f1f1] rounded-tl-[16px] rounded-tr-[16px] px-[20px] pt-[24px] pb-[16px]">
+          <h2 className="text-[#333] text-[23px] font-extrabold pb-[16px]">
+            Mikä on Jouluradio?
+          </h2>
+          <p className="text-black text-[14px] font-medium leading-[1.5] pb-[12px]">
+            Jouluradio on suomalainen, valtakunnallinen radiokanavaverkosto, joka soittaa
+            joulumusiikkia ympäri vuoden ja erityisesti joulun aikaan useilla eri
+            teemakanavilla. Se tarjoaa kuulijoille tunnelmallisen ja monipuolisen kattauksen
+            kotimaista ja kansainvälistä joulumusiikkia.
+          </p>
+          <p className="text-black text-[14px] font-medium leading-[1.5] pb-[24px]">
+            Jouluradiota ylläpitävät ja rahoittavat seurakunnat ympäri Suomen, ja sen
+            mediatuotannosta vastaa Kirkko ja kaupunki.
+          </p>
+          <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px]">Lisätiedot</h3>
+          <div className="flex flex-wrap pb-[16px]">
+            {['Yhteystiedot', 'Medialle', 'Vikailmoitus', 'Mainonta Jouluradiossa'].map(
+              (link) => (
+                <button
+                  key={link}
+                  className="flex h-[28px] items-center pr-[12px] text-[#8d2422] text-[14px] font-medium"
+                >
+                  {link}
+                </button>
+              )
+            )}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-[#8D2422] flex flex-col items-center pt-[24px] pb-[24px] gap-[16px]">
+          <Image src="/Logo-white.svg" alt="Jouluradio" width={80} height={32} />
+          <div className="flex items-center">
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="flex size-[44px] items-center justify-center text-white"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="flex size-[44px] items-center justify-center text-white"
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+          </div>
+          <p className="text-white text-[11px] font-medium text-center">
+            Kaikki oikeudet pidätetään. Kirkko ja kaupunki. 2026.
+          </p>
+        </footer>
+      </div>
     </div>
-  );
+  )
 }
