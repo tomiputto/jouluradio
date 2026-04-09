@@ -70,7 +70,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     (channel: Channel) => {
       const audio = audioRef.current
       if (!audio) return
-      if (currentChannel?.id !== channel.id) {
+      if (currentChannel?.id !== channel.id || !audio.src) {
         audio.src = channel.streamUrl
         setCurrentChannel(channel)
         setNowPlaying(null)
