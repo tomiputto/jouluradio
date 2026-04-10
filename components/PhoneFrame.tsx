@@ -82,12 +82,12 @@ export default function PhoneFrame({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="flex min-h-screen items-start justify-center bg-[#e5e5ea] py-[40px]">
-      <div className="rounded-[46px] p-[10px] shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
+      <div className="rounded-[60px] p-[10px] shadow-[0_24px_90px_rgba(0,0,0,0.45)]"
         style={{
           background: 'linear-gradient(160deg, #5a5a5a 0%, #1c1c1e 25%, #0a0a0a 55%, #2c2c2e 100%)',
           boxShadow: '0 24px 90px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12)',
         }}>
-        <div className="relative flex w-[402px] flex-col overflow-hidden rounded-[36px]" style={{ height: '844px' }}>
+        <div className="relative flex w-[402px] flex-col overflow-hidden rounded-[56px]" style={{ height: '844px' }}>
           <StatusBar />
           <BrowserBar />
 
