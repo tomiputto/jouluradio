@@ -1,21 +1,11 @@
 'use client'
 
-const messages = [
-  { time: 'Juuri nyt', text: 'Oikein Hyvää Joulua kaikille!' },
-  { time: '2 min sitten', text: 'Vuoden paras hetki kun Jouluradio aloitti taas lähetykset :)' },
-  { time: '11.28', text: 'Terveisiä Loimalta. Jouluradio on taas auki!' },
-  { time: '10.09', text: 'Hyvin kuuluu autossa matkalla mökille. Hyvää Joulua studion tontuille' },
-  { time: '10.02', text: 'Jouluradio soi jo kolmatta vuotta meillä kotona koko joulukuun!' },
-  { time: '9.55', text: 'Terveiset Rovaniemeltä, täällä on jo lunta 😊' },
-  { time: '9.48', text: 'Paras joululaulu tuli juuri. Kiitos Jouluradio!' },
-  { time: '9.41', text: 'Kuuntelen töissä, koko toimisto tykkää!' },
-  { time: '9.33', text: 'Terveisiä Tampereelta – joulutunnelma on täällä!' },
-  { time: '9.20', text: 'Klassinen joulu -kanava on aivan ihana' },
-  { time: '9.11', text: 'Hyvää joulua koko Jouluradion tiimille ❤️' },
-  { time: '8.58', text: 'Kuuntelen joka aamu kahvikupin kanssa, kiitos!' },
-]
+interface Message {
+  time: string
+  text: string
+}
 
-export default function ScrollingMessages() {
+export default function ScrollingMessages({ messages }: { messages: Message[] }) {
   const doubled = [...messages, ...messages]
 
   return (

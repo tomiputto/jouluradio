@@ -38,7 +38,7 @@ export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchSta
     <>
       {/* Expanded panel — grows upward from above the collapsed bar */}
       <div
-        className="absolute left-0 right-0 z-40 overflow-hidden bg-[#1a1a1a] transition-[height] duration-300 ease-in-out"
+        className="absolute left-0 right-0 z-40 overflow-hidden bg-[#1a1a1a] transition-[height] duration-300 ease-in-out rounded-t-[36px]"
         style={{ bottom: '143px', height: expanded ? '637px' : '0px' }}
       >
         <div className="flex flex-col h-full">
@@ -143,7 +143,7 @@ export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchSta
         {/* Expand button — floats above top edge */}
         {!expanded && (
           <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-0 z-10">
-            <div className="flex size-[28px] items-center justify-center rounded-full bg-[#1a1a1a] shadow-md">
+            <div className="flex h-[40px] w-[56px] items-center justify-center rounded-full bg-[#1a1a1a] shadow-md">
               <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
                 <path d="M1 6l5-5 5 5" stroke="white" strokeOpacity="0.7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

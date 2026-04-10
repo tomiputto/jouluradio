@@ -23,9 +23,12 @@ export default function ChannelCard({ channel }: Props) {
   }
 
   return (
-    <button
+    <div
       onClick={handleClick}
-      className="relative h-[200px] w-[144px] shrink-0 overflow-hidden rounded-[30px] text-left focus-visible:outline-2 focus-visible:outline-white"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && handleClick()}
+      className="relative h-[200px] w-[144px] shrink-0 overflow-hidden rounded-[30px] text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
       style={{
         background: `linear-gradient(${channel.gradientAngle}deg, ${channel.gradientFrom}, ${channel.gradientTo})`,
       }}
@@ -79,6 +82,6 @@ export default function ChannelCard({ channel }: Props) {
           15 viimeistä
         </button>
       </div>
-    </button>
+    </div>
   )
 }

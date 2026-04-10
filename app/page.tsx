@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import ChannelCard from '@/components/ChannelCard'
 import NewsCard from '@/components/NewsCard'
 import MessageForm from '@/components/MessageForm'
-import ScrollingMessages from '@/components/ScrollingMessages'
+import KuumalinjaSection from '@/components/KuumalinjaSection'
 import { channels } from '@/lib/channels'
 
 const newsItems = [
@@ -96,16 +96,11 @@ export default function Home() {
           <p className="text-[#333] text-[14px] font-medium pb-[12px]">
             Lähetä viesti Jouluradion studioon
           </p>
-          <MessageForm maxLength={200} />
-
-          <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px] mt-[8px]">
-            Uusimmat viestit
-          </h3>
-          <ScrollingMessages />
+          <KuumalinjaSection />
         </section>
 
         {/* Lähetä meille musiikkia */}
-        <section className="px-[20px] pt-[32px]">
+        <section className="px-[20px] pt-[48px]">
           <div className="rounded-[16px] bg-[#8d2422] px-[24px] pt-[28px] pb-[16px] flex flex-col gap-[16px]">
             <h2 className="text-white text-[23px] font-extrabold">
               Lähetä meille musiikkia
@@ -145,8 +140,8 @@ export default function Home() {
             Jouluradiota ylläpitävät ja rahoittavat seurakunnat ympäri Suomen, ja sen
             mediatuotannosta vastaa Kirkko ja kaupunki.
           </p>
-          <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px]">Lisätiedot</h3>
-          <div className="flex flex-wrap pb-[16px]">
+          <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px] mt-[24px]">Lisätiedot</h3>
+          <div className="flex flex-wrap pb-[32px]">
             {['Yhteystiedot', 'Medialle', 'Vikailmoitus', 'Mainonta Jouluradiossa'].map(
               (link) => (
                 <button
