@@ -1,6 +1,44 @@
 export type Locale = 'fi' | 'en' | 'sv'
 
-export const translations = {
+type Translation = {
+  listen: string
+  exploreChannels: string
+  news: string
+  readAll: string
+  aboutTitle: string
+  mhzFrequencies: string
+  partners: string
+  faq: string
+  hotline: string
+  hotlineDesc: string
+  latestMessages: string
+  messagePlaceholder: string
+  send: string
+  charsLeft: string
+  sendMusic: string
+  sendMusicDesc: string
+  readMore: string
+  sendFeedback: string
+  sendFeedbackDesc: string
+  whatIsTitle: string
+  whatIsText1: string
+  whatIsText2: string
+  moreInfo: string
+  contact: string
+  forMedia: string
+  bugReport: string
+  advertising: string
+  copyright: string
+  channels: string
+  lastSongs: string
+  lastSongsShort: string
+  loading: string
+  noData: string
+  newsItems: { title: string; date: string; imageUrl: string }[]
+  messages: { time: string; text: string }[]
+}
+
+export const translations: Record<Locale, Translation> = {
   fi: {
     listen: 'Kuuntele',
     exploreChannels: 'Tutustu kanaviin',
@@ -163,4 +201,4 @@ export const translations = {
       { time: '8.58', text: 'Jag lyssnar varje morgon med mitt kaffe, tack!' },
     ],
   },
-} satisfies Record<Locale, typeof translations.fi>
+}

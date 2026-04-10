@@ -55,7 +55,7 @@ export default function Home() {
             <button className="text-[#8d2422] text-[14px] font-bold">{t.readAll}</button>
           </div>
           <div className="scroll-x flex gap-[16px] px-[20px]">
-            {t.newsItems.map((item) => (
+            {t.newsItems.map((item: { title: string; date: string; imageUrl: string }) => (
               <NewsCard key={item.imageUrl} title={item.title} date={item.date} imageUrl={item.imageUrl} />
             ))}
           </div>

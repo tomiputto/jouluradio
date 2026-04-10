@@ -16,7 +16,7 @@ export default function KuumalinjaSection() {
   const handleSubmit = (text: string) => {
     const now = new Date()
     const time = now.toLocaleTimeString('fi-FI', { hour: '2-digit', minute: '2-digit' })
-    setMessages((prev) => [{ time, text }, ...prev])
+    setMessages((prev: { time: string; text: string }[]) => [{ time, text }, ...prev])
   }
 
   return (
