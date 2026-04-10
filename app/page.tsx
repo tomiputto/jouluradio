@@ -48,8 +48,8 @@ export default function Home() {
 
         {/* Ajankohtaista */}
         <section
-          className="pt-[32px] pb-[32px]"
-          style={{ background: 'linear-gradient(to bottom, #f1f1f1 0%, #f1f1f1 20%, #ffffff 100%)' }}
+          className="relative pt-[32px] pb-[32px]"
+          style={{ background: '#f1f1f1' }}
         >
           <div className="flex items-center justify-between px-[20px] pb-[19px]">
             <h2 className="text-[#333] text-[23px] font-extrabold">Ajankohtaista</h2>
@@ -60,6 +60,11 @@ export default function Home() {
               <NewsCard key={item.id} title={item.title} date={item.date} imageUrl={item.imageUrl} />
             ))}
           </div>
+          {/* Gradient overlay — fades cards to white from bottom */}
+          <div
+            className="pointer-events-none absolute bottom-0 left-0 right-0 h-[80px]"
+            style={{ background: 'linear-gradient(to bottom, transparent, white)' }}
+          />
         </section>
 
         {/* Tietoa Jouluradiosta */}
