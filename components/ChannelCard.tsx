@@ -2,6 +2,7 @@
 
 import { useAudio } from '@/context/AudioContext'
 import { usePlaylistSheet } from '@/context/PlaylistSheetContext'
+import { useLanguage } from '@/context/LanguageContext'
 import { type Channel } from '@/lib/channels'
 import MarqueeText from './MarqueeText'
 
@@ -12,6 +13,7 @@ interface Props {
 export default function ChannelCard({ channel }: Props) {
   const { currentChannel, isPlaying, nowPlaying, play, pause } = useAudio()
   const { open } = usePlaylistSheet()
+  const { t } = useLanguage()
 
   const isActive = currentChannel?.id === channel.id
   const artist = isActive && nowPlaying ? nowPlaying.artist : channel.currentArtist
@@ -79,7 +81,7 @@ export default function ChannelCard({ channel }: Props) {
           onClick={(e) => { e.stopPropagation(); open(channel) }}
           className="absolute bottom-[16px] left-0 right-0 text-center text-white text-[12px] font-medium"
         >
-          15 viimeistä
+          {t.lastSongsShort}
         </button>
       </div>
     </div>

@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { useAudio } from '@/context/AudioContext'
+import { useLanguage } from '@/context/LanguageContext'
 import { channels } from '@/lib/channels'
 
 const channelLogos: Record<string, string> = {
@@ -26,6 +27,7 @@ interface Props {
 
 export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchStart, onTouchEnd }: Props) {
   const { currentChannel, isPlaying, nowPlaying, toggle, play } = useAudio()
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
@@ -90,7 +92,7 @@ export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchSta
           {/* Divider + label */}
           <div className="px-[20px] pb-[10px] shrink-0">
             <div className="h-px bg-white/10 mb-[14px]" />
-            <span className="text-white/40 text-[11px] font-bold tracking-wider uppercase">Kanavat</span>
+            <span className="text-white/40 text-[11px] font-bold tracking-wider uppercase">{t.channels}</span>
           </div>
 
           {/* Channel list — scrollable */}

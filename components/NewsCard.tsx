@@ -1,3 +1,7 @@
+'use client'
+
+import { useLanguage } from '@/context/LanguageContext'
+
 interface Props {
   title: string
   date: string
@@ -5,6 +9,7 @@ interface Props {
 }
 
 export default function NewsCard({ title, date, imageUrl }: Props) {
+  const { t } = useLanguage()
   return (
     <div className="relative h-[196px] w-[160px] shrink-0 overflow-hidden rounded-[16px] bg-white shadow-[0px_4px_24px_0px_rgba(0,0,0,0.08)]">
       {/* Image */}
@@ -29,7 +34,7 @@ export default function NewsCard({ title, date, imageUrl }: Props) {
           {title}
         </p>
         <button className="mt-auto flex h-[40px] items-center text-[#8d2422] text-[13px] font-bold">
-          Lue lisää
+          {t.readMore}
         </button>
       </div>
     </div>

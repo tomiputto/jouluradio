@@ -2,6 +2,7 @@
 
 import AudioPlayer from './AudioPlayer'
 import PlaylistSheet from './PlaylistSheet'
+import NavigationDrawer from './NavigationDrawer'
 import { useState, useRef } from 'react'
 
 const PLAYER_FULL_HEIGHT = 707
@@ -107,6 +108,7 @@ export default function PhoneFrame({ children }: { children: React.ReactNode }) 
           />
 
           <PlaylistSheet />
+          <NavigationDrawer />
           <BrowserNavBar />
         </div>
       </div>

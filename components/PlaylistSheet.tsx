@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { usePlaylistSheet } from '@/context/PlaylistSheetContext'
+import { useLanguage } from '@/context/LanguageContext'
 
 const channelLogos: Record<string, string> = {
   jouluradio: '/Jouluradio.svg',
@@ -23,6 +24,7 @@ interface Song {
 
 export default function PlaylistSheet() {
   const { channel, close } = usePlaylistSheet()
+  const { t } = useLanguage()
   const [songs, setSongs] = useState<Song[]>([])
   const [loading, setLoading] = useState(false)
 
@@ -74,7 +76,7 @@ export default function PlaylistSheet() {
             </div>
             <div>
               <p className="text-black text-[16px] font-bold">{channel.name}</p>
-              <p className="text-[#919191] text-[12px]">15 viimeistä kappaletta</p>
+              <p className="text-[#919191] text-[12px]">{t.lastSongs}</p>
             </div>
             <button onClick={close} className="ml-auto flex size-[36px] items-center justify-center rounded-full bg-[#f2f2f7]">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -90,11 +92,11 @@ export default function PlaylistSheet() {
         <div className="overflow-y-auto" style={{ height: 'calc(100% - 120px)' }}>
           {loading ? (
             <div className="flex justify-center pt-[40px]">
-              <p className="text-[#919191] text-[14px]">Ladataan...</p>
+              <p className="text-[#919191] text-[14px]">{t.loading}</p>
             </div>
           ) : songs.length === 0 ? (
             <div className="flex justify-center pt-[40px]">
-              <p className="text-[#919191] text-[14px]">Ei tietoja saatavilla</p>
+              <p className="text-[#919191] text-[14px]">{t.noData}</p>
             </div>
           ) : (
             songs.map((song, i) => (
