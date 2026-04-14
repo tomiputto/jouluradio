@@ -23,12 +23,12 @@ export default function Header() {
       {/* Right side */}
       <div className="flex items-center gap-[4px]">
         {/* Instagram */}
-        <a href="#" aria-label="Instagram" className="flex size-[44px] items-center justify-center">
+        <a href="https://www.instagram.com/jouluradio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex size-[44px] items-center justify-center">
           <Image src="/instagram.png" alt="Instagram" width={24} height={24} className="object-contain" />
         </a>
 
         {/* Facebook */}
-        <a href="#" aria-label="Facebook" className="flex size-[44px] items-center justify-center">
+        <a href="https://www.facebook.com/jouluradio/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex size-[44px] items-center justify-center">
           <Image src="/facebook.png" alt="Facebook" width={24} height={24} className="object-contain" />
         </a>
 
@@ -36,7 +36,7 @@ export default function Header() {
         <div className="relative">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="flex items-center justify-between gap-[4px] px-[8px] h-[44px] w-[60px]"
+            className="flex items-center gap-[5px] px-[8px] h-[44px] w-[58px]"
           >
             <span className="text-black text-[12px] font-semibold uppercase">{locale}</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

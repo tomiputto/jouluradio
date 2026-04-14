@@ -19,9 +19,11 @@ interface AudioContextValue {
   currentChannel: Channel | null
   isPlaying: boolean
   nowPlaying: NowPlaying | null
+  volume: number
   play: (channel: Channel) => void
   pause: () => void
   toggle: () => void
+  setVolume: (v: number) => void
 }
 
 const AudioContext = createContext<AudioContextValue | null>(null)
@@ -31,6 +33,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   const [currentChannel, setCurrentChannel] = useState<Channel | null>(channels[0])
   const [isPlaying, setIsPlaying] = useState(false)
   const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null)
+  const [volume, setVolumeState] = useState(1)
 
   useEffect(() => {
     const audio = new Audio()
@@ -80,6 +83,11 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     [currentChannel]
   )
 
+  const setVolume = useCallback((v: number) => {
+    setVolumeState(v)
+    if (audioRef.current) audioRef.current.volume = v
+  }, [])
+
   const pause = useCallback(() => {
     audioRef.current?.pause()
   }, [])
@@ -91,7 +99,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AudioContext.Provider
-      value={{ currentChannel, isPlaying, nowPlaying, play, pause, toggle }}
+      value={{ currentChannel, isPlaying, nowPlaying, volume, play, pause, toggle, setVolume }}
     >
       {children}
     </AudioContext.Provider>

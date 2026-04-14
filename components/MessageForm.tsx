@@ -25,7 +25,7 @@ export default function MessageForm({ maxLength = 200, showCategories = false, o
 
   return (
     <>
-      {showCategories && <div className="scroll-x flex gap-[8px] pb-[16px]">
+      {showCategories && <div className="scroll-x flex gap-[8px] pt-[6px] pb-[20px]">
         {CATEGORIES.map((cat) => (
           <button
             key={cat}

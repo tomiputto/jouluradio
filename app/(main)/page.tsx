@@ -47,9 +47,15 @@ export default function Home() {
 
         {/* Ajankohtaista */}
         <section
-          className="relative pt-[32px] pb-[32px]"
+          className="relative pt-[8px] pb-[32px] mt-[16px]"
           style={{ background: '#f1f1f1' }}
         >
+          {/* Curved top edge — left lower than right */}
+          <div className="absolute left-0 right-0 pointer-events-none" style={{ top: '-36px', height: '36px' }}>
+            <svg viewBox="0 0 402 36" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+              <path d="M 0 18 C 100 0 300 36 402 18 L 402 36 L 0 36 Z" fill="#f1f1f1" />
+            </svg>
+          </div>
           <div className="flex items-center justify-between px-[20px] pb-[19px]">
             <h2 className="text-[#333] text-[23px] font-extrabold">{t.news}</h2>
             <button className="text-[#8d2422] text-[14px] font-bold">{t.readAll}</button>
@@ -86,7 +92,7 @@ export default function Home() {
         </section>
 
         {/* Kuumalinja */}
-        <section className="mt-[32px] bg-[#f1f1f1] px-[20px] py-[24px] rounded-[16px] mx-[0]">
+        <section className="mt-[48px] bg-[#f1f1f1] px-[20px] py-[24px] rounded-[16px] mx-[0]">
           <h2 className="text-[#333] text-[23px] font-extrabold pb-[8px]">{t.hotline}</h2>
           <p className="text-[#333] text-[14px] font-medium pb-[12px]">{t.hotlineDesc}</p>
           <KuumalinjaSection />
@@ -111,7 +117,13 @@ export default function Home() {
         </section>
 
         {/* Mikä on Jouluradio */}
-        <section className="mt-[32px] bg-[#f1f1f1] rounded-tl-[16px] rounded-tr-[16px] px-[20px] pt-[24px] pb-[16px]">
+        <section className="relative mt-[48px] bg-[#f1f1f1] px-[20px] pt-[24px] pb-[16px]">
+          {/* Curved top edge — same as Ajankohtaista */}
+          <div className="absolute left-0 right-0 pointer-events-none" style={{ top: '-36px', height: '36px' }}>
+            <svg viewBox="0 0 402 36" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+              <path d="M 0 18 C 100 0 300 36 402 18 L 402 36 L 0 36 Z" fill="#f1f1f1" />
+            </svg>
+          </div>
           <h2 className="text-[#333] text-[23px] font-extrabold pb-[16px]">{t.whatIsTitle}</h2>
           <p className="text-black text-[14px] font-medium leading-[1.5] pb-[12px]">{t.whatIsText1}</p>
           <p className="text-black text-[14px] font-medium leading-[1.5] pb-[24px]">{t.whatIsText2}</p>
@@ -129,14 +141,14 @@ export default function Home() {
         <footer className="bg-[#8D2422] flex flex-col items-center pt-[24px] pb-[24px] gap-[16px]">
           <Image src="/Logo-white.svg" alt="Jouluradio" width={80} height={32} />
           <div className="flex items-center">
-            <a href="#" aria-label="Instagram" className="flex size-[44px] items-center justify-center text-white">
+            <a href="https://www.instagram.com/jouluradio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex size-[44px] items-center justify-center text-white">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
               </svg>
             </a>
-            <a href="#" aria-label="Facebook" className="flex size-[44px] items-center justify-center text-white">
+            <a href="https://www.facebook.com/jouluradio/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex size-[44px] items-center justify-center text-white">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>

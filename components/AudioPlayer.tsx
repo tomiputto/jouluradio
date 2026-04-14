@@ -26,7 +26,7 @@ interface Props {
 }
 
 export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchStart, onTouchEnd }: Props) {
-  const { currentChannel, isPlaying, nowPlaying, toggle, play } = useAudio()
+  const { currentChannel, isPlaying, nowPlaying, volume, toggle, play, setVolume } = useAudio()
   const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
@@ -87,6 +87,27 @@ export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchSta
                 </svg>
               )}
             </button>
+          </div>
+
+          {/* Volume control */}
+          <div className="flex items-center gap-[10px] px-[20px] pt-[16px] pb-[24px] shrink-0">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
+              <path d="M2 5.5h2.5L8 2.5v11L4.5 10.5H2v-5z" fill="white" fillOpacity="0.5" />
+              {volume > 0 && <path d="M10 4.5c1.1.9 1.8 2.2 1.8 3.5s-.7 2.6-1.8 3.5" stroke="white" strokeOpacity="0.5" strokeWidth="1.3" strokeLinecap="round" />}
+              {volume > 0.5 && <path d="M11.8 2.5c1.7 1.4 2.7 3.4 2.7 5.5s-1 4.1-2.7 5.5" stroke="white" strokeOpacity="0.5" strokeWidth="1.3" strokeLinecap="round" />}
+            </svg>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
+              className="flex-1 h-[3px] appearance-none rounded-full cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, rgba(255,255,255,0.8) ${volume * 100}%, rgba(255,255,255,0.15) ${volume * 100}%)`,
+              }}
+            />
           </div>
 
           {/* Divider + label */}
@@ -173,8 +194,8 @@ export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchSta
             )}
           </div>
           <div className="flex flex-1 min-w-0 flex-col gap-[2px]">
-            <span className="text-[#9a9a9a] text-[9px] font-bold tracking-wider uppercase">
-              {currentChannel?.label ?? 'Jouluradio'}
+            <span className="text-[#9a9a9a] text-[9px] font-bold tracking-wider uppercase truncate">
+              {currentChannel?.name ?? 'Jouluradio'}
             </span>
             <p className="text-white text-[13px] font-bold leading-tight truncate">
               {artist && title ? (
@@ -184,7 +205,7 @@ export default function AudioPlayer({ expanded, onExpand, onCollapse, onTouchSta
               )}
             </p>
           </div>
-          <button
+<button
             onClick={(e) => { e.stopPropagation(); toggle() }}
             className="flex size-[40px] shrink-0 items-center justify-center rounded-full bg-white"
             aria-label={isPlaying ? 'Pause' : 'Play'}

@@ -22,7 +22,7 @@ export default function KuumalinjaSection() {
   return (
     <>
       <MessageForm maxLength={200} onSubmit={handleSubmit} />
-      <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px] mt-[8px]">
+      <h3 className="text-[#333] text-[18px] font-extrabold pb-[12px] mt-[20px]">
         {t.latestMessages}
       </h3>
       <ScrollingMessages messages={messages} />

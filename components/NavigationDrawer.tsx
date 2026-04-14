@@ -68,10 +68,10 @@ export default function NavigationDrawer() {
 
         {/* Some ikonit */}
         <div className="flex items-center gap-[4px] px-[12px] mt-auto pb-[32px]">
-          <a href="#" aria-label="Instagram" className="flex size-[44px] items-center justify-center">
+          <a href="https://www.instagram.com/jouluradio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex size-[44px] items-center justify-center">
             <Image src="/instagram.png" alt="Instagram" width={24} height={24} className="object-contain" />
           </a>
-          <a href="#" aria-label="Facebook" className="flex size-[44px] items-center justify-center">
+          <a href="https://www.facebook.com/jouluradio/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex size-[44px] items-center justify-center">
             <Image src="/facebook.png" alt="Facebook" width={24} height={24} className="object-contain" />
           </a>
         </div>
