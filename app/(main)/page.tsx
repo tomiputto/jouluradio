@@ -107,7 +107,7 @@ export default function Home() {
         <section className="px-[20px] pt-[40px]">
           <h2 className="text-[#333] text-[23px] font-extrabold pb-[8px]">{t.sendFeedback}</h2>
           <p className="text-[#333] text-[14px] font-medium pb-[12px]">{t.sendFeedbackDesc}</p>
-          <MessageForm maxLength={200} />
+          <MessageForm maxLength={200} showCategories />
         </section>
 
         {/* Mikä on Jouluradio */}
