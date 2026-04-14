@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
-import Providers from './providers'
-import PhoneFrame from '@/components/PhoneFrame'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -22,12 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fi" className={`${plusJakartaSans.variable} h-full`}>
-      <body className="min-h-full bg-[#e5e5ea] antialiased">
-        <Providers>
-          <PhoneFrame>
-            {children}
-          </PhoneFrame>
-        </Providers>
+      <body className="min-h-full antialiased">
+        {children}
       </body>
     </html>
   )
